@@ -14,7 +14,7 @@
 - [🛠 Built With ](#-built-with-)
   - [📌 Tech Stack ](#-tech-stack-)
 - [🎲 Key Features ](#-key-features-)
-- [🚀 Link to Frontend ](#-Front-end-)
+- [🚀 Link to Backend ](#-Front-end-)
 - [💻 Getting Started ](#-getting-started-)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
@@ -38,9 +38,9 @@ In this project I set up a "Hello world" project focusing only on backend
 
 ## 📌 Tech Stack <a name="tech-stack"></a>
 
-## 🚀 Live Demo <a name="live-demo"></a>
+## 🚀 Backend Link <a name="live-demo"></a>
 
-- [Front end](https://github.com/obed300/hello-react-front-end)
+- [Back end](https://github.com/obed300/hello-rails-back-end.git)
 
 | Domain | Tech Stack |
 |--------|--------|
