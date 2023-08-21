@@ -1,18 +1,19 @@
+// features/message/messageSlice.js
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const initialState = {
   loading: false,
-  messages: [], // Corrected property name
-  error: ''
+  messages: [],
+  error: '',
 };
 
-const url = 'http://localhost:3000/messages';
+const url = 'http://127.0.0.1:3000/messages';
 
 export const fetchMessages = createAsyncThunk('messages/fetchMessages', async () => {
   try {
     const response = await axios.get(url);
-    return response.data.map(message => message.text);
+    return response.data;
   } catch (error) {
     throw new Error('Failed to fetch messages.');
   }
@@ -21,20 +22,15 @@ export const fetchMessages = createAsyncThunk('messages/fetchMessages', async ()
 const messageSlice = createSlice({
   name: 'messages',
   initialState,
-  reducers: {
-    getRandomMessage: state => {
-      const randomIndex = Math.floor(Math.random() * state.messages.length);
-      state.randomMessage = state.messages[randomIndex];
-    }
-  },
-  extraReducers: builder => {
+  reducers: {},
+  extraReducers: (builder) => {
     builder
-      .addCase(fetchMessages.pending, state => {
+      .addCase(fetchMessages.pending, (state) => {
         state.loading = true;
       })
       .addCase(fetchMessages.fulfilled, (state, action) => {
         state.loading = false;
-        state.messages = action.payload; // Corrected property name
+        state.messages = action.payload;
         state.error = '';
       })
       .addCase(fetchMessages.rejected, (state, action) => {
@@ -42,8 +38,7 @@ const messageSlice = createSlice({
         state.messages = [];
         state.error = action.error.message;
       });
-  }
+  },
 });
 
-export const { getRandomMessage } = messageSlice.actions;
 export default messageSlice.reducer;

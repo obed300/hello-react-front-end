@@ -5,7 +5,10 @@ import { fetchMessages } from '../redux/features/message/messageSlice';
 
 const MessageDisplay = () => {
   const dispatch = useDispatch();
-  const messages = useSelector(state => state.messages.messages); // Access messages from the store
+
+  const { messages, Loading, error } = useSelector((state) => state.messages);
+
+  // const messages = useSelector((state) => state.message.messages);
 
   useEffect(() => {
     dispatch(fetchMessages());
@@ -13,10 +16,11 @@ const MessageDisplay = () => {
 
   return (
     <div>
-      <h1>Messages</h1>
-      {messages.map((message, index) => (
-        <div key={index}>{message}</div>
-      ))}
+      <div>
+        {Loading && <h2>Loading...</h2>}
+        {error && <p>{error}</p>}
+        {messages && <h2>{messages.greeting}</h2>}
+      </div>
     </div>
   );
 };

@@ -4,7 +4,7 @@ import MessageDisplay from './components/Message';
 function App() {
   return (
     <div className="App">
-       <MessageDisplay /> 
+      <MessageDisplay />
     </div>
   );
 }
